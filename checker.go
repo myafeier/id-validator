@@ -60,6 +60,7 @@ func generateLongCode(id string) (map[string]string, error) {
 	if len(subMatch) < 6 {
 		return nil, fmt.Errorf("invalid id card match %s", id)
 	}
+	fmt.Printf("%+v", subMatch)
 
 	return map[string]string{
 		"body":         subMatch[1],
@@ -85,7 +86,7 @@ func checkAddressCode(addressCode string, birthdayCode string, strict bool) bool
 	// 1. 直辖市，无市级信息
 	// 2. 省直辖县或县级市，无市级信息
 	// 不判断县，因为县的数据有误
-	if addressInfo["province"] == ""  {
+	if addressInfo["province"] == "" {
 		return false
 	}
 
